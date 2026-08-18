@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prakash Acharya — Rails engineer</title>
+<meta name="description" content="Senior Rails engineer. Building ReelReview and teaching developers to direct Claude Code and own every line it writes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Serif:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --porcelain: #FAFAF7;
+    --ink: #191817;
+    --graphite: #6E6A63;
+    --ruby: #C21F30;
+    --hairline: #E4E1DB;
+    --diff-green-bg: #EAF5EE;
+    --diff-green: #1A7F37;
+    --diff-red-bg: #FBEDEC;
+    --diff-red: #B42318;
+    --serif: "IBM Plex Serif", Georgia, serif;
+    --sans: "IBM Plex Sans", -apple-system, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; }
+
+  body {
+    background: var(--porcelain);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 6rem 1.5rem 4rem;
+  }
+
+  a { color: var(--ruby); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--ruby); outline-offset: 3px; border-radius: 2px; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.8125rem;
+    color: var(--graphite);
+    margin-bottom: 3rem;
+  }
+
+  /* ---- the diff ---- */
+  .diff {
+    font-family: var(--mono);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 3.5rem;
+    background: #fff;
+  }
+  .diff-header {
+    font-size: 0.75rem;
+    color: var(--graphite);
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .diff .line { display: block; padding: 0.1rem 1rem; white-space: pre-wrap; }
+  .diff .del { background: var(--diff-red-bg); color: var(--diff-red); }
+  .diff .add { background: var(--diff-green-bg); color: var(--diff-green); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .diff .add { animation: settle 0.9s ease-out 0.4s backwards; }
+    @keyframes settle {
+      from { opacity: 0; transform: translateY(4px); }
+      to   { opacity: 1; transform: none; }
+    }
+  }
+
+  /* ---- identity ---- */
+  h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 2.375rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+  }
+  .role { color: var(--graphite); margin-bottom: 2.75rem; }
+
+  /* ---- now (git-status board) ---- */
+  .now { list-style: none; padding: 0; margin-bottom: 3.5rem; }
+  .now li {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--hairline);
+  }
+  .now li:last-child { border-bottom: 1px solid var(--hairline); }
+  .now .k {
+    font-family: var(--mono);
+    font-size: 0.8125rem;
+    color: var(--graphite);
+    padding-top: 0.2rem;
+  }
+
+  /* ---- course ---- */
+  .course {
+    border: 1px solid var(--ink);
+    border-radius: 6px;
+    padding: 1.75rem;
+    margin-bottom: 3.5rem;
+  }
+  .course .k {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--ruby);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .course h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
+  .course p { color: var(--graphite); margin-bottom: 1.5rem; }
+  .course .cta {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.9375rem;
+    background: var(--ink);
+    color: var(--porcelain);
+    text-decoration: none;
+    padding: 0.65rem 1.25rem;
+    border-radius: 4px;
+  }
+  .course .cta:hover { background: var(--ruby); }
+
+  .contact { margin-bottom: 4rem; }
+
+  footer {
+    font-size: 0.8125rem;
+    color: var(--graphite);
+    border-top: 1px solid var(--hairline);
+    padding-top: 1.25rem;
+  }
+
+  @media (max-width: 30rem) {
+    main { padding-top: 3.5rem; }
+    h1 { font-size: 1.875rem; }
+    .now li { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">~/prakashacharya.dev</p>
+
+  <div class="diff" role="img" aria-label="A code diff: the line 'AI writes your app. You ship it unread.' is removed and replaced with 'AI drafts. You read every line. You own what ships.'">
+    <div class="diff-header">how_to_build_with_ai.md</div>
+    <span class="line del">- AI writes your app. You ship it unread.</span>
+    <span class="line add">+ AI drafts. You read every line. You own what ships.</span>
+  </div>
+
+  <h1>Prakash Acharya</h1>
+  <p class="role">Senior Rails engineer — nine years of production software, currently in healthcare SaaS.</p>
+
+  <ul class="now">
+    <li><span class="k">shipping</span><span>ReelReview, a video review tool — built with the exact AI-assisted workflow I teach.</span></li>
+    <li><span class="k">writing</span><span>A course on building and deploying a real Rails 8 SaaS with Claude Code — responsibly.</span></li>
+    <li><span class="k">stack</span><span>Ruby, Rails, Hotwire, SQLite/Postgres, Claude Code, a VPS.</span></li>
+  </ul>
+
+  <section class="course">
+    <span class="k">in production now</span>
+    <h2>Ship a SaaS with Rails&nbsp;+ Claude&nbsp;Code</h2>
+    <p>The core skill isn't memorizing Rails — it's having enough Rails judgment to direct an AI agent and own the code it generates. Join the list and get Module 0 free at launch.</p>
+    <a class="cta" href="https://prakashacharya.podia.com/">Join the list →</a>
+  </section>
+
+  <p class="contact">Say hello: <a href="mailto:prakash@prakashacharya.dev">prakash@prakashacharya.dev</a></p>
+
+  <footer>© 2026 Clayton Cloud Solutions LLC</footer>
+</main>
+</body>
+</html>
